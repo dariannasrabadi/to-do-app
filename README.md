@@ -18,6 +18,7 @@
 
 ### CLIENT SIDE
 
+- [x] link vendors, script, styles to index.html
 
 - [ ] On index.html create the base layout of how the webapplication will look like (tasks input, add, delete, table for tasks, etc)
 
@@ -55,13 +56,13 @@
 ### DATABASE SIDE 
 
 
-- [ ] Create a table for categories
+- [x] Create a table for categories
 
     - Takes in a varchar of categories
 
     - SERIAL PRIMARY KEY of id
 
-- [ ] Create a table titled tasks
+- [x] Create a table titled tasks
 
     - Takes in a varchar of tasks
     

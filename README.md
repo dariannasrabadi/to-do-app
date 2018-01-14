@@ -5,13 +5,15 @@
 ### PRE-START
 
 
-- [ ] Create the framework/folders needed from server to public. 
+- [x] Create the framework/folders needed from server to public. 
 
-- [ ] Create files needed for all sides, database, server and client side (this includes server.js, pool.js, index.html, etc)
+- [x] Create files needed for all sides, database, server and client side (this includes server.js, pool.js, index.html, etc)
 
-- [ ] Create a database with the name "todo_app" and save a blank .sql file to the folder where this is stored. 
+- [x] Create a database with the name "todo_app" and save a blank .sql file to the folder where this is stored. 
 
-- [ ] Do the following on console npm init, npm install express --save, npm install body-parser --save, npm install jquery --save, npm install bootstrap --save
+- [x] Do the following on console npm init, npm install express --save, npm install body-parser --save, npm install jquery --save, npm install bootstrap --save
+
+- [x] Create a .gitignore including node_modules etc
 
 
 ### CLIENT SIDE

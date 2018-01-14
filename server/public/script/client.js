@@ -3,7 +3,7 @@ $(document).ready(onReady);
 function onReady() { //Start of document listeners
     $('#addTask').on('click', addTask);
     // $('#deleteTask').on('click', deleteTasks)
-    getTasks();
+    // getTasks();
     setDate();
 }; //End of document listeners
 
@@ -30,7 +30,7 @@ function addTask() { //Start of addTask Function - Used in listener
         data: dataToSend,
         success: (response)=>{
             console.log('Inside addTask POST ajax: ', response);
-            getTasks();
+            // getTasks();
         },
         error: ()=>{
             alert('Error was received when adding Task')

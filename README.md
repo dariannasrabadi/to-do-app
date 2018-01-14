@@ -1,12 +1,8 @@
-### 3rd Weekend Challenge
-
+# 3rd Weekend Challenge
 
 ## TO-DO APP Check List
 
-
-## BASE MODE  
-
-# PRE-START
+### PRE-START
 
 
 - [ ] Create the framework/folders needed from server to public. 
@@ -18,7 +14,7 @@
 - [ ] Do the following on console npm init, npm install express --save, npm install body-parser --save, npm install jquery --save, npm install bootstrap --save
 
 
-# CLIENT SIDE
+### CLIENT SIDE
 
 
 - [ ] On index.html create the base layout of how the webapplication will look like (tasks input, add, delete, table for tasks, etc)
@@ -54,7 +50,7 @@
 - [ ] Add base CSS/Bootstrap
 
 
-# DATABASE SIDE 
+### DATABASE SIDE 
 
 
 - [ ] Create a table for categories
@@ -76,7 +72,7 @@
     - Due Date 
 
 
-# SERVER SIDE 
+### SERVER SIDE 
 
 
 - [ ] create consts for express, app, port, modules, etc. 
@@ -130,8 +126,7 @@
 
 - [ ] In whatever fashion you would like, create an 'are you sure: yes / no' option when deleting a task.
 
-## PRO MODE 
-# (In no particular order)
+## PRO MODE (In no particular order)
 
 - [ ] Publish your app to Heroku.
 

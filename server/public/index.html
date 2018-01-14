@@ -9,6 +9,36 @@
     <script src="script/client.js"></script>
 </head>
 <body>
-    
+    <h1>TO-DO List</h1>
+    <div id="formArea">
+        <textarea id="textBox" cols="50" rows="3"></textarea>
+        <div id="buttonDiv">
+            <button id="addTask">Add Task</button>
+            <button id="deleteTask">Delete Task</button>
+        </div>
+    </div>
+    <div id="tableContainer">
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Current Tasks</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TestCategory</td>
+                    <td>test tasks this has to be fairly long so I am typing this out to get the feel of it</td>
+                    <td><button>INCOMPLETE</button></td>
+                    <td>10/20/2018</td>
+                    <td><input type="checkbox" class="selectThis"></td>
+                </tr>
+                <!-- Data appended here -->
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

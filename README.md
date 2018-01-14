@@ -78,15 +78,15 @@
 ### SERVER SIDE 
 
 
-- [ ] create consts for express, app, port, modules, etc. 
+- [x] create consts for express, app, port, modules, etc. 
 
-- [ ] write base codes that start up the port the server is hosted on, the static files, etc. 
+- [x] write base codes that start up the port the server is hosted on, the static files, etc. 
 
 - [ ] Grab the GET/POSTS/DELETE from client side and send to proper router. 
 
-- [ ] edit pool.js information to link server.js to the database 
+- [x] edit pool.js information to link server.js to the database 
 
-- [ ] On the router file create function to send the post input into the database 
+- [x] On the router file create function to send the post input into the database 
 
     - .then sends back status to the client on success (200)
     

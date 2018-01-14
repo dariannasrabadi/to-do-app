@@ -54,5 +54,18 @@ function getTasks() { //Start of getTasks Function - Used as a listener and in t
 } //Start of getTasks Function - Used as a listener and in the ff functions: addTasks, deleteTasks.
 
 function displayData(response) { //Start of displayData function - used in getTasks function
-    //APPEND THE RESPONSE INTO THE TABLE 
+    let statusNow;
+    if (response.completion_status == true) {
+        statusNow = 'Complete!'
+    }
+    else{
+        statusNow = '<button class="incompleteButton">INCOMPLETE</button>'
+    }
+    $trow = '<tr></tr>'
+    $trow.append(`<td>${response.category}</td>`)
+    $trow.append(`<td>${response.task}</td>`)
+    $trow.append(`<td>${statusNow}</td>`)
+    $trow.append(`<td>${response.due_date}</td>`)
+    $trow.append('<input type="checkbox" class="selectThis">')
+    $('#tableBody').append($trow);
 } //Start of displayData function - used in getTasks function

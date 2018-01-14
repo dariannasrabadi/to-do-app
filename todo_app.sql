@@ -19,9 +19,12 @@ CREATE TABLE tasks (
 	due_date DATE
 );
 
+SELECT * FROM categories WHERE categories.category = 'test';
+
+
 -- This is a test insert to see how the table turns out. remove /* at the start and */ at the end and execute each statement then refresh to see the results on the table.
 
-/* INSERT INTO categories (category)
+/*INSERT INTO categories (category)
 VALUES ('test');
 
 INSERT INTO tasks (task, categories_id, completion_status, due_date)

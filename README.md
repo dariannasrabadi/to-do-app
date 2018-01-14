@@ -11,7 +11,7 @@
 
 - [x] Create a database with the name "todo_app" and save a blank .sql file to the folder where this is stored. 
 
-- [x] Do the following on console npm init, npm install express --save, npm install body-parser --save, npm install jquery --save, npm install bootstrap --save
+- [x] Do the following on console npm init, npm install express --save, npm install body-parser --save, npm install jquery --save, npm install bootstrap --save, npm install pg --save
 
 - [x] Create a .gitignore including node_modules etc
 

@@ -11,8 +11,15 @@
 <body>
     <h1>TO-DO List</h1>
     <div id="formArea">
-        <textarea id="textBox" cols="50" rows="3"></textarea>
+        <div>
+        <strong>Category:</strong> <input type="text" id="category" placeholder="example: Schoolwork">
+        </div>
+        <div>
+            <strong>Task to do:</strong><br>
+            <textarea id="textBox" cols="50" rows="3"></textarea>
+        </div>
         <div id="buttonDiv">
+            <strong>Due By:</strong> <input type="date" id="dateInput">
             <button id="addTask">Add Task</button>
             <button id="deleteTask">Delete Task</button>
         </div>

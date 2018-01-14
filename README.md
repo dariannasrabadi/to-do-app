@@ -20,21 +20,21 @@
 
 - [x] link vendors, script, styles to index.html
 
-- [ ] On index.html create the base layout of how the webapplication will look like (tasks input, add, delete, table for tasks, etc)
+- [x] On index.html create the base layout of how the webapplication will look like (tasks input, add, delete, table for tasks, etc)
 
-- [ ] Create a function to run listeners once document is ready with the get method ajax listener included at start.  
+- [x] Create a function to run listeners once document is ready with the get method ajax listener included at start.  
 
-- [ ] Link multiple buttons to functions that will run Ajax when the button is clicked
+- [x] Link multiple buttons to functions that will run Ajax when the button is clicked
 
 - [ ] Create listeners for each button when clicked to run their respective function.
 
-- [ ] Send the data from add tasks button back to the server for process and storage. Data sent is done via Ajax with a Post method. 
+- [x] Send the data from add tasks button back to the server for process and storage. Data sent is done via Ajax with a Post method. 
 
     - On success activate get ajax to reset display
     
     - On failure log out reason and alert user 
 
-- [ ] Retrieve data back from the server with Ajax via a Get method.
+- [x] Retrieve data back from the server with Ajax via a Get method.
 
     - On success store data into a let variable 
     

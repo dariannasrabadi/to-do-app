@@ -2,9 +2,12 @@ $(document).ready(onReady);
 
 function onReady() { //Start of document listeners
     $('#addTask').on('click', addTask);
-    // $('#deleteTask').on('click', deleteTasks)
+    $('#tableBody').on('click', '.deleteThis', deleteTasks)
     getTasks();
     setDate();
+    /*$('#tableBody').on('click', '.selectThis', ()=>{
+        console.log($(this).parents('.selectThis').data()); -- .DATA DID NOT WORK FOR ME
+    }) */
 }; //End of document listeners
 
 function setDate() { // Start of set date function - used in listener
@@ -69,14 +72,36 @@ function displayData(response) { //Start of displayData function - used in displ
         statusNow = '<button class="incompleteButton">INCOMPLETE</button>'
     }
     if (response.categories_id == response.id) {
+        
         $trow = $(`<tr>`);
         $trow.append(`<td>${response.category}</td>`)
         $trow.append(`<td>${response.task}</td>`)
         $trow.append(`<td>${statusNow}</td>`)
         $trow.append(`<td>${response.due_date.substr(0, 10)}</td>`)
-        $trow.append('<input type="checkbox" class="selectThis">')
+        $trow.append(`<button class="deleteThis" value="${response.tasks_id}">Delete Task</button>`) //added value because .data did not work for me. Changed input type into a button and selectThis class to deleteThis - not enough time spent to do the multiple delete option.
         $('#tableBody').append($trow);
-        console.log($trow); 
+        console.log($trow);
+         
     }
-    console.log('displayData done');
+    // $('.selectThis').data(response) DID NOT WORK 
+    console.log('displayData done:');
+    // console.log($('.bodyRow').data('response');
+    
 }; //END of displayData function - used in displayAllData function
+
+
+function deleteTasks() {
+    let id = $(this).val()
+    console.log(id);
+    $.ajax({
+        method: 'DELETE',
+        url: '/tasks/' + id,
+        success: (response)=>{
+            console.log('Inside deleteTasks DELETE ajax: ', response);
+            getTasks()
+        },
+        error: ()=>{
+            alert('Error was received in deleting the data')
+        }
+    })
+}

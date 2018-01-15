@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => { // START OF GET /TASKS '/' route!
     // query DB
-    const queryText = `SELECT * FROM tasks, categories;`;
+    const queryText = `SELECT categories.category, categories.id, tasks.id AS tasks_id, tasks.task, tasks.categories_id, tasks.completion_status, tasks.due_date FROM categories, tasks;`;
     pool.query(queryText) // START OF FIRST GET QUERY
         // runs on successful query
         .then((result) => {
@@ -133,5 +133,21 @@ router.post('/', (req, res) => { // START OF POST /TASKS '/' route!
 
 }); // END OF POST /TASKS '/' Tasks route!
 
+router.delete('/:id', (req,res) => { //Start of DELETE /TASKS '/:id' ROUTE
+    console.log('ID from request: ', req.params.id);
+    //SQL query
+    const queryText = 'DELETE FROM tasks WHERE id=$1';
+    pool.query(queryText, [req.params.id])
+        // runs on successful query
+        .then((result) => {
+            console.log('DELETE query results: ', result);            
+            res.sendStatus(200);
+        })
+        // error handling
+        .catch((err) => {
+            console.log('error making DELETE query:', err);
+            res.sendStatus(500);
+        });
+}); //END of DELETE /TASKS '/:id' ROUTE
 
 module.exports = router;

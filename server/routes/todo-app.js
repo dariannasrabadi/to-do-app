@@ -4,8 +4,11 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => { // START OF GET /TASKS '/' route!
     // query DB
-    const queryText = `SELECT categories.category, categories.id, tasks.id AS tasks_id, tasks.task, tasks.categories_id, tasks.completion_status, tasks.due_date FROM categories, tasks
-    ORDER BY completion_status, tasks.due_date;`;
+    // const queryText = `SELECT categories.category, categories.id, tasks.id AS tasks_id, tasks.task, tasks.categories_id, tasks.completion_status, tasks.due_date FROM categories, tasks
+    // ORDER BY completion_status, tasks.due_date;`;
+    const queryText = `SELECT categories.category, categories.id, tasks.id AS tasks_id, tasks.task, tasks.categories_id, tasks.completion_status, tasks.due_date
+     FROM categories JOIN tasks ON categories.id = tasks.categories_id
+     ORDER BY completion_status, tasks.due_date;`
     pool.query(queryText) // START OF FIRST GET QUERY
         // runs on successful query
         .then((result) => {

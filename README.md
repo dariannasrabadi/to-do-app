@@ -40,7 +40,7 @@
     
     - On failure log out reason and alert user 
 
-- [ ] Display data unto the DOM in a table format 
+- [x] Display data unto the DOM in a table format 
 
 - [ ] Store the task id unto each row via .data()
 
@@ -82,7 +82,7 @@
 
 - [x] write base codes that start up the port the server is hosted on, the static files, etc. 
 
-- [ ] Grab the GET/POSTS/DELETE from client side and send to proper router. 
+- [x] Grab the GET/POSTS/DELETE from client side and send to proper router. 
 
 - [x] edit pool.js information to link server.js to the database 
 
@@ -98,7 +98,7 @@
     
     - .catch sends back status to the client on failure (500)
     
-- [ ] On the router file create function to retrieve the GET input from the database 
+- [x] On the router file create function to retrieve the GET input from the database 
 
     - .then sends back rows of data to the client on success
 

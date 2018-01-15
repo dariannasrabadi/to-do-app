@@ -70,23 +70,33 @@ function displayAllData(response) { // Start of displayAllData function - Used i
 
 function displayData(response) { //Start of displayData function - used in displayAllData function
     let statusNow;
+    let addDate;
     if (response.completion_status == true) {
-        statusNow = '<td class="finished">Task Is Done!</td>'
+        statusNow = '<td class="finished text-center">Task Is Done!</td>'
+        $trow = $(`<tr class="bg-success">`);
+        addDate = `<td class="text-center">${response.due_date.substr(0, 10)}</td>`
     }
     else{
-        statusNow = `<td><button class="incompleteButton" value="${response.tasks_id}">Mark Finished</button></td>`
+        if (response.due_date < getCurrentDay()) {
+            statusNow = `<td><button class="incompleteButton w-100" value="${response.tasks_id}">Mark Finished</button></td>`
+            $trow = $(`<tr class="bg-danger">`);
+            addDate = (`<td class="text-center">${response.due_date.substr(0, 10)}</td>`)
+        }
+        else {
+            statusNow = `<td><button class="incompleteButton w-100" value="${response.tasks_id}">Mark Finished</button></td>`
+            $trow = $(`<tr>`);
+            addDate = `<td class="text-center">${response.due_date.substr(0, 10)}</td>`
+        }
     }
     if (response.categories_id == response.id) {
-        
-        $trow = $(`<tr>`);
-        $trow.append(`<td>${response.category}</td>`)
-        $trow.append(`<td>${response.task}</td>`)
+        $trow.append(`<td class="text-center">${response.category}</td>`)
+        $trow.append(`<td class="text-center">${response.task}</td>`)
         $trow.append(statusNow)
-        $trow.append(`<td>${response.due_date.substr(0, 10)}</td>`)
-        $trow.append(`<button class="deleteThis" value="${response.tasks_id}">Delete</button>`) //added value because .data did not work for me. Changed input type into a button and selectThis class to deleteThis - not enough time spent to do the multiple delete option.
+        $trow.append(addDate)
+        $trow.append(`<button class="deleteThis w-100" value="${response.tasks_id}">Delete</button>`) //added value because .data did not work for me. Changed input type into a button and selectThis class to deleteThis - not enough time spent to do the multiple delete option.
         $('#tableBody').append($trow);
-        console.log($trow);
-         
+        console.log(response.due_date.substr(0, 10), getCurrentDay());        
+    
     }
     // $('.selectThis').data(response) DID NOT WORK 
     console.log('displayData done:');
@@ -127,4 +137,22 @@ function updateStatus() {
             alert('Error was received in updating the data')
         }
     })
+}
+
+function getCurrentDay() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1;
+    let yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+
+    today = yyyy + '-' + mm + '-' + dd;
+    return today;
 }

@@ -1,52 +1,61 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>To Do Application</title>
-    <link rel="stylesheet" href="vendors/bootstrap-theme.css">
-    <link rel="stylesheet" href="vendors/bootstrap.css">
-    <link rel="stylesheet" href="style/style.css">
-    <script src="vendors/jquery.js"></script>
-    <script src="script/client.js"></script>
+  <title>To Do Application</title>
+  <link rel="stylesheet" href="vendors/bootstrap-theme.css">
+  <link rel="stylesheet" href="vendors/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://v40.pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="style/style.css">
+  <script src="vendors/jquery.js"></script>
+  <script src="script/client.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
-    <h1>TO-DO List</h1>
-    <div id="formArea">
-        <div>
-        <strong>Category:</strong> <input type="text" id="category" placeholder="example: Schoolwork">
-        </div>
-        <div>
-            <strong>Task to do:</strong><br>
-            <textarea id="textBox" cols="50" rows="3"></textarea>
-        </div>
-        <div id="buttonDiv">
-            <strong>Due By:</strong> <input type="date" id="dateInput">
-            <button id="addTask">Add Task</button>
-            <!-- <button id="deleteTask">Delete Task</button>  not enough time spent to do the multiple delete option. -->
-        </div>
+  <h1 class="text-center">TO-DO List</h1>
+  <div id="formArea">
+    <div class="text-center"> <strong>Category:</strong>
+      <input type="text" id="category" placeholder="example: Schoolwork"> </div>
+    <div class="align-items-center w-100 text-center d-flex justify-content-center"> <strong>Task to do:</strong>
+      <br> <textarea id="textBox" cols="50" rows="3"></textarea> </div>
+    <div id="buttonDiv" class="d-flex justify-content-center align-items-center w-100"> <strong>Due By:</strong>
+      <input type="date" id="dateInput">
+      <button id="addTask" class="">Add Task</button>
+      <!-- <button id="deleteTask">Delete Task</button>  not enough time spent to do the multiple delete option. -->
     </div>
-    <div id="tableContainer">
-        <table>
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Current Tasks</th>
-                    <th>Status</th>
-                    <th>Due Date</th>
-                    <th>Delete Task</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <!-- this will be emptied out -->
-                <tr>
-                    <td>placeholders</td>
-                    <td>lots of words go into this little thing</td>
-                    <td><button>Mark Finished</button></td>
-                    <td>10/20/2018</td>
-                    <td><button>Delete</button></td>
-                </tr>
-                <!-- Data appended here -->
-            </tbody>
-        </table>
-    </div>
+  </div>
+  <div id="tableContainer" class="">
+    <table class="w-75 mx-auto table-bordered">
+      <thead>
+        <tr class="text-center table-dark">
+          <th>Category</th>
+          <th>Current Tasks</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Delete Task</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- this will be emptied out -->
+        <tr>
+          <td>placeholders</td>
+          <td>lots of words go into this little thing</td>
+          <td>
+            <button class="w-100">Mark Finished</button>
+          </td>
+          <td class="">10/20/2018</td>
+          <td>
+            <button class="w-100">Delete</button>
+          </td>
+        </tr>
+        <!-- Data appended here -->
+      </tbody>
+    </table>
+  </div>
 </body>
+
 </html>

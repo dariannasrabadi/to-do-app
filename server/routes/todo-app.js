@@ -54,14 +54,14 @@ router.post('/', (req, res) => { // START OF POST /TASKS '/' route!
                 pool.query(queryText, dataArray) //START OF SECOND QUERY - A
                 // runs on successful query
                     .then((result) => {
-                     
+                        console.log('IM INSIDE SECOND QUERY A, thisis the dataArray: ', dataArray);
                         queryText = `
-                        SELECT * FROM categories WHERE categories.category = '$1';
+                        SELECT * FROM categories WHERE categories.category = '${dataArray}';
                         `;
-                        dataArray = [req.body.category]
-                        pool.query(queryText, dataArray) //START OF THIRD QUERY - A
+                        pool.query(queryText) //START OF THIRD QUERY - A
                         // runs on successful query
                             .then((result) => {
+                                console.log('IM INSIDE THIRD QUERY A');
                                 categoryCheck = {
                                     category: result.rows[0].category,
                                     categories_id: result.rows[0].id
@@ -79,12 +79,12 @@ router.post('/', (req, res) => { // START OF POST /TASKS '/' route!
                                 })
                                 // error handling
                                     .catch((err) => {
-                                        console.log('error making "/" POST THIRD query A:', err);
+                                        console.log('error making "/" POST FOURTH query A:', err);
                                         res.sendStatus(500);
                                 }); //END OF FOURTH QUERY - A
                             })
                             .catch((err) => {
-                                console.log('error making "/" POST SECOND query A:', err);
+                                console.log('error making "/" POST THIRD query A:', err);
                                 res.sendStatus(500);
                             });// END OF THIRD QUERY -A 
                     })

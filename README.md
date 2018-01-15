@@ -26,7 +26,7 @@
 
 - [x] Link multiple buttons to functions that will run Ajax when the button is clicked
 
-- [ ] Create listeners for each button when clicked to run their respective function.
+- [x] Create listeners for each button when clicked to run their respective function.
 
 - [x] Send the data from add tasks button back to the server for process and storage. Data sent is done via Ajax with a Post method. 
 
@@ -42,9 +42,9 @@
 
 - [x] Display data unto the DOM in a table format 
 
-- [ ] Store the task id unto each row via .data()
+- [x] ~~Store the task id unto each row via .data()~~ Replaced with button and added values to the button
 
-- [ ] Delete button sends the id info the the server via Ajax with the delete method. 
+- [x] Delete button sends the id info the the server via Ajax with the delete method. 
 
     - On success activate get ajax to reset display
     
@@ -92,7 +92,7 @@
     
     - .catch sends back status to the client on failure (500)
 
-- [ ] On the router file create function to delete a row from the database 
+- [x] On the router file create function to delete a row from the database 
 
     - .then sends back status to the client on success (200)
     

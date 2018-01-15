@@ -22,14 +22,31 @@ CREATE TABLE tasks (
 SELECT * FROM categories WHERE categories.category = 'test';
 
 
--- This is a test insert to see how the table turns out. remove /* at the start and */ at the end and execute each statement then refresh to see the results on the table.
+-- Insert the following examples into the table to have a few base categories already listed as well as some tasks.
 
-/*INSERT INTO categories (category)
-VALUES ('test');
+INSERT INTO categories (category)
+VALUES ('Schoolwork');
+
+INSERT INTO categories (category)
+VALUES ('Officework');
+
+INSERT INTO categories (category)
+VALUES ('Home');
+
+INSERT INTO categories (category)
+VALUES ('Work');
 
 INSERT INTO tasks (task, categories_id, completion_status, due_date)
-VALUES ('nothing', 1, true, '10/10/2010'); */
+VALUES ('Finish Homework', 1, false, '10/10/2010'); 
 
+INSERT INTO tasks (task, categories_id, completion_status, due_date)
+VALUES ('Attend Meeting', 2, false, '08/10/2018'); 
+
+INSERT INTO tasks (task, categories_id, completion_status, due_date)
+VALUES ('Do laundry', 3, true, '01/01/2018'); 
+
+INSERT INTO tasks (task, categories_id, completion_status, due_date)
+VALUES ('Work... OUT', 4, false, '12/12/2018'); 
 
 
 
@@ -77,3 +94,8 @@ END $$;
 		SELECT * FROM categories WHERE categories.category = 'test';
 
 */
+
+SELECT categories.category, categories.id, tasks.id AS tasks_id, tasks.task, tasks.categories_id, tasks.completion_status, tasks.due_date FROM categories, tasks;
+
+SELECT categories.id, categories.category, tasks.id AS "task_id", tasks.task, tasks.categories_id, tasks.completion_status, tasks.due_date FROM categories JOIN tasks ON categories.id = tasks.categories_id;
+

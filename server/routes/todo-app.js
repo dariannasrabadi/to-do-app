@@ -4,7 +4,8 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => { // START OF GET /TASKS '/' route!
     // query DB
-    const queryText = `SELECT categories.category, categories.id, tasks.id AS tasks_id, tasks.task, tasks.categories_id, tasks.completion_status, tasks.due_date FROM categories, tasks;`;
+    const queryText = `SELECT categories.category, categories.id, tasks.id AS tasks_id, tasks.task, tasks.categories_id, tasks.completion_status, tasks.due_date FROM categories, tasks
+    ORDER BY completion_status, tasks.due_date;`;
     pool.query(queryText) // START OF FIRST GET QUERY
         // runs on successful query
         .then((result) => {
@@ -149,5 +150,22 @@ router.delete('/:id', (req,res) => { //Start of DELETE /TASKS '/:id' ROUTE
             res.sendStatus(500);
         });
 }); //END of DELETE /TASKS '/:id' ROUTE
+
+router.put('/:id', (req,res) => { //Start of PUT /TASKS '/:id' ROUTE
+    console.log('ID from request: ', req.params.id);
+    //SQL query
+    const queryText = 'UPDATE tasks SET completion_status=TRUE WHERE id=$1';
+    pool.query(queryText, [req.params.id])
+        // runs on successful query
+        .then((result) => {
+            console.log('PUT query results: ', result);            
+            res.sendStatus(200);
+        })
+        // error handling
+        .catch((err) => {
+            console.log('error updating query:', err);
+            res.sendStatus(500);
+        });
+}); //END of PUT /TASKS '/:id' ROUTE
 
 module.exports = router;

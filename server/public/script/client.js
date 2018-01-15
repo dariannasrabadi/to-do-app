@@ -3,6 +3,7 @@ $(document).ready(onReady);
 function onReady() { //Start of document listeners
     $('#addTask').on('click', addTask);
     $('#tableBody').on('click', '.deleteThis', deleteTasks)
+    $('#tableBody').on('click', '.incompleteButton', updateStatus)
     getTasks();
     setDate();
     /*$('#tableBody').on('click', '.selectThis', ()=>{
@@ -20,29 +21,33 @@ function setDate() { // Start of set date function - used in listener
 
 
 function addTask() { //Start of addTask Function - Used in listener
-    
-    let dataToSend = {
-        category: $('#category').val(),
-        task: $('#textBox').val(),
-        due_date: $('#dateInput').val()
-    };
-    console.log(dataToSend);
-    $.ajax({
-        method: 'POST',
-        url: '/tasks',
-        data: dataToSend,
-        success: (response)=>{
-            console.log('Inside addTask POST ajax: ', response);
-            getTasks();
-        },
-        error: ()=>{
-            alert('Error was received when adding Task')
-        }
-    })
+    if ($('#category').val() == '' || $('#textBox').val() == '' || $('#dateInput').val() == '') {
+        alert('Please fill out all areas and select a due date')
+    }
+    else {
+        let dataToSend = {
+            category: $('#category').val(),
+            task: $('#textBox').val(),
+            due_date: $('#dateInput').val()
+        };
+        console.log(dataToSend);
+        $.ajax({
+            method: 'POST',
+            url: '/tasks',
+            data: dataToSend,
+            success: (response)=>{
+                console.log('Inside addTask POST ajax: ', response);
+                getTasks();
+            },
+            error: ()=>{
+                alert('Error was received when adding Task')
+            }
+        })
+    }
 
 }; //End of addTask Function - Used in listener
 
-function getTasks() { //Start of getTasks Function - Used as a listener and in the ff functions: addTasks, deleteTasks.
+function getTasks() { //Start of getTasks Function - Used as a listener and in the ff functions: addTasks, deleteTasks, updateStatus.
     $.ajax({
         method: 'GET',
         url: '/tasks',
@@ -54,7 +59,7 @@ function getTasks() { //Start of getTasks Function - Used as a listener and in t
             alert('Error was received in retrieving the data')
         }
     })
-}; //Start of getTasks Function - Used as a listener and in the ff functions: addTasks, deleteTasks.
+}; //Start of getTasks Function - Used as a listener and in the ff functions: addTasks, deleteTasks, updateStatus.
 
 function displayAllData(response) { // Start of displayAllData function - Used in getTasks AJAX function 
     $('#tableBody').empty();
@@ -66,19 +71,19 @@ function displayAllData(response) { // Start of displayAllData function - Used i
 function displayData(response) { //Start of displayData function - used in displayAllData function
     let statusNow;
     if (response.completion_status == true) {
-        statusNow = 'Complete!'
+        statusNow = '<td class="finished">Task Is Done!</td>'
     }
     else{
-        statusNow = '<button class="incompleteButton">INCOMPLETE</button>'
+        statusNow = `<td><button class="incompleteButton" value="${response.tasks_id}">Mark Finished</button></td>`
     }
     if (response.categories_id == response.id) {
         
         $trow = $(`<tr>`);
         $trow.append(`<td>${response.category}</td>`)
         $trow.append(`<td>${response.task}</td>`)
-        $trow.append(`<td>${statusNow}</td>`)
+        $trow.append(statusNow)
         $trow.append(`<td>${response.due_date.substr(0, 10)}</td>`)
-        $trow.append(`<button class="deleteThis" value="${response.tasks_id}">Delete Task</button>`) //added value because .data did not work for me. Changed input type into a button and selectThis class to deleteThis - not enough time spent to do the multiple delete option.
+        $trow.append(`<button class="deleteThis" value="${response.tasks_id}">Delete</button>`) //added value because .data did not work for me. Changed input type into a button and selectThis class to deleteThis - not enough time spent to do the multiple delete option.
         $('#tableBody').append($trow);
         console.log($trow);
          
@@ -91,17 +96,35 @@ function displayData(response) { //Start of displayData function - used in displ
 
 
 function deleteTasks() {
+    if (confirm('Are you sure you want to save this thing into the database?')) {
+        let id = $(this).val()
+        console.log('Delete id: ', id);
+        $.ajax({
+            method: 'DELETE',
+            url: '/tasks/' + id,
+            success: (response)=>{
+                console.log('Inside deleteTasks DELETE ajax: ', response);
+                getTasks()
+            },
+            error: ()=>{
+                alert('Error was received in deleting the data')
+            }
+        })
+    }
+}
+
+function updateStatus() {
     let id = $(this).val()
-    console.log(id);
+    console.log('PUT id: ', id);
     $.ajax({
-        method: 'DELETE',
+        method: 'PUT',
         url: '/tasks/' + id,
         success: (response)=>{
-            console.log('Inside deleteTasks DELETE ajax: ', response);
+            console.log('Inside updateStatus PUT ajax: ', response);
             getTasks()
         },
         error: ()=>{
-            alert('Error was received in deleting the data')
+            alert('Error was received in updating the data')
         }
     })
 }

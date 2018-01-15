@@ -4,18 +4,18 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => { // START OF GET /TASKS '/' route!
     // query DB
-    const queryText = `SELECT * FROM task`;
-    pool.query(queryText)
+    const queryText = `SELECT * FROM tasks, categories;`;
+    pool.query(queryText) // START OF FIRST GET QUERY
         // runs on successful query
         .then((result) => {
-            console.log('"/" GET results: ', result.rows);            
+            console.log('"/" INSIDE FIRST GET QUERY FORLOOP: ', result.rows); 
             res.send(result.rows);
         })
         // error handling
         .catch((err) => {
             console.log('error making "/" GET query:', err);
             res.sendStatus(500);
-        });
+        }); // END OF FIRST GET QUERY
 
 }); // END OF GET /TASKS '/' Tasks route!
 
